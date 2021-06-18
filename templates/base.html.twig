@@ -1,19 +1,263 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Impulsion Collective{% endblock %}</title>
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+        <!-- CSS -->
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header id="header">
+            <div class="header-inner">
+                <div class="logo" >
+                    <img src="{{ asset('assets/img/logo2.svg') }}"  alt="logo">
+                </div>
+                <div class="shop">
+                    <a href="https://www.helloasso.com/associations/impulsion-collective/collectes/crowdfunding-edition-n-1-impulsion-collective" target="_blank">NOUS SOUTENIR</a>
+                </div>
+                <div class="reso">
+                    <a href="https://www.instagram.com/impulsioncollective/" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </header>
+
+            <section class="banner" id="banner">
+                <div class="banner-inner" id="bannerInner">
+                    <div class="image-canvas">
+                        <img src="{{ data_uri_thumbnail('assets/img/le-passeur.jpg', 100, 75) }}" {{ stimulus_controller('symfony/ux-lazy-image/lazy-image') }} data-hd-src="{{ asset('assets/img/le-passeur.jpg') }}" alt="" style="height: 100%; width:100%">
+                    </div>
+                    <canvas id="canvas"></canvas>
+                    <div class="big-text" id="lineId">
+                        <div class="line">
+                            <h2>
+                                <span>Association s'appropriant les murs</span>
+                            </h2>
+                        </div>
+                        <div class="line end">
+                            <h2>
+                                <span>d'Amiens pour exposer des artistes</span>
+                            </h2>
+                        </div>
+                        <div class="line">
+                            <h2>
+                                <span>venant de tous horizons.</span>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="edition">
+                <div class="edition-inner">
+                    <div class="edition-content" id="edition">
+                        <div class="edition-list" >
+                            <h3>Edition 0</h3>
+                            <ul class="rows" id="editionList">
+                                <li class="row l1">
+                                    <div>
+                                        <img src="{{ asset('assets/img/barberot.jpg') }}" alt="Sylvain Barberot">
+                                    </div>
+                                    <div class="text-artist">
+                                        <h4>Sylvain Barberot</h4>
+                                        <p>Alors que notre culture s’efforce de dessiner l’histoire au burin Sylvain Barberot se charge d’inhiber voir d’effacer sa propre mémoire. Le corps n’est que le support de cette mémoire dont il est dépendant voir nécessiteux. Elle le construit, le modèle et le transforme. Si l’anamnèse se défini comme la remontée du souvenir, S.B la traque pour mieux s’en séparer. De son père mort il en tire la dernière image mémorable, celle du crématorium, pour la confronter à son jeune fils appelant son papa.
+                                            Et si il s’évertue à garder trace en dessinant sur du papier doublé de carbone, ce n’est que pour les noyer dans la multitude.
+                                        </p>
+                                        <a href="https://instagram.com/barberotsylvain" target="_blank">@barberotsylvain</a>
+                                    </div>
+                                </li>
+                                <li class="row l2">
+                                    <div>
+                                        <img src="{{ asset('assets/img/donald-2016.jpg') }}" alt="Aurélien Buttin">
+                                    </div>
+                                    <div class="text-artist">
+                                        <h4>Aurélien Buttin</h4>
+                                        <p>"Je suis photographe de voyage et mode lifestyle qui prend des photos naturelles sur le moment pour saisir les émotions." Aurelien Buttin
+                                        </p>
+                                        <a href="https://instagram.com/aurelienbuttin" target="_blank">@aurelienbuttin</a>
+                                        <br>
+                                        <a href="https://www.aurelienbuttin.fr/" target="_blank">www.aurelienbuttin.fr</a>
+                                    </div>
+                                </li>
+                                <li class="row l3">
+                                    <div>
+                                        <img src="{{ asset('assets/img/Au-dessous.jpg') }}"  alt="Jacqueline Cuts">
+                                    </div>
+                                    <div class="text-artist">
+                                        <h4>Jacqueline Cuts</h4>
+                                        <p>Jeune artiste amiénoise autodidacte, Jacqueline Cuts réalise ses collages à partir d'extraits de magazines, allant de la mode aux journaux anciens en passant par les flyers.
+                                            D'influences multiples, son travail est à la fois original, poétique, surréaliste, humoristique et provocant. A travers ses créations se dessine une vision du monde...
+                                            Un monde occidental sexué voir sexuel, commercial, déséquilibré, déshumanisé parfois.
+                                        </p>
+                                        <a href="https://instagram.com/jacqueline_cuts" target="_blank">@jacqueline_cuts </a>
+                                    </div>
+                                </li>
+                                <li class="row l4">
+                                    <div>
+                                        <img src="{{ asset('assets/img/nelson3.jpg') }}" alt="Human Soul">
+                                    </div>
+                                    <div class="text-artist">
+                                        <h4>Human Soul</h4>
+                                        <p>Human Soul est un projet artistique né de la rencontre de deux artistes: Anne Laure Maison et Michel Cam.
+                                            A bord de leur bateau-atelier Ilo2, ils vont à la rencontre d’habitants du littoral d’Asie du sud est afin d’en réaliser le portrait. Chaque portrait fait exister ces “invisibles", ces habitants du bord de l’eau, fragiles devant la force des éléments.
+                                            Les artistes les impliquent dans l’installation de leur portrait.
+                                            L’art devient ici langage universel créant une passerelle entre leur réalité et la notre.
+                                            Les créations video réalisées font partie intégrante cette oeuvre sensorielle pluridisciplinaire.
+                                        </p>
+                                        <a href="https://instagram.com/humansoulproject" target="_blank">@humansoulproject</a>
+                                        <br>
+                                        <a href="https://humansoul.fr/" target="_blank">www.humansoul.fr</a>
+                                    </div>
+                                </li>
+                                <li class="row l5">
+                                    <div>
+                                        <img src="{{ asset('assets/img/RED-AIME.jpg') }}" alt="Elea Jeanne">
+                                    </div>
+                                    <div class="text-artist">
+                                        <h4>Elea Jeanne</h4>
+                                        <p>Elea Jeane est une artiste francaise vivant et travaillant a Paris.
+                                            Sa pratique implique des recherches approfondies sur le pouvoir et l'influence de la norme sur la sexualité, le genre et la spiritualité mais aussi par le pouvoir décevant de l'image au service de ceux ci.
+                                            Les thèmes travaillés par l'artiste évoluent au travers d'immersions, de décisions irrationnelles formant une solution et l'inattendu comme une porte tournante à ce qui est à venir.
+                                        </p>
+                                        <a href="https://instagram.com/eleajeanne" target="_blank">@eleajeanne</a> <br>
+                                        <a href="https://www.eleajeanneschmitter.com/" target="_blank">www.eleajeanneschmitter.com</a>
+                                    </div>
+                                </li>
+                                <li class="row l6">
+                                    <div>
+                                        <img src="{{ asset('assets/img/sans-titre2.jpg') }}" alt="Megan Laurent" >
+                                    </div>
+                                    <div class="text-artist">
+                                        <h4>Megan Laurent</h4>
+                                        <p>Ma préoccupation principale est de rendre compte d’un paradoxe: comment se constituer “un corps photographique” quand on est à la fois photographe et sujet?
+
+                                            Depuis fin 2010 je suis mon propre sujet d’étude, ma seule matière première. Je contrôle l’intégralité de mon image, je reconfigure mon corps et mon visage au gré de mes humeurs. Pas de travestissement, ni de création d’un
+                                            quelconque alter égo : je ne veux pas jouer à être une autre puisque je pense l’autoportrait comme un double catalyseur, à la fois dans l’émotion et dans la rétention.
+                                        </p>
+                                        <a href="https://instagram.com/meganlaurent_art" target="_blank">@meganlaurent_art</a>
+                                        <br>
+                                        <a href="http://www.meganlaurent.com/" target="_blank">www.meganlaurent.com</a>
+                                    </div>
+                                </li>
+                                <li class="row l7">
+                                    <div>
+                                        <img src="{{ asset('assets/img/Cliff.jpg') }}" alt="Simon Lefebvre">
+                                    </div>
+                                    <div class="text-artist">
+                                        <h4>Simon Lefebvre</h4>
+                                        <p>"Mon travail porte sur des moments intenses, intimes et sincères comme un voyage à travers le road-trip ou un simple week-end en France.
+                                            J'essaye de traduire à travers ces productions mon sentiment d'authenticité et la beauté du moment.
+                                            J'adore travailler avec la lumière naturelle et les couleurs du soleil qui sont mes principales inspirations." Simon Lefebvre.
+                                        </p>
+                                        <a href="https://instagram.com/simonlefebvre1" target="_blank">@simonlefebvre1</a>
+                                        <br>
+                                        <a href="http://www.simonlefebvre.com/" target="_blank">www.simonlefebvre.com</a>
+                                    </div>
+                                </li>
+                                <li class="row l8">
+                                    <div>
+                                        <img src="{{ asset('assets/img/lemassi.jpg') }}" alt="Le Massi">
+                                    </div>
+                                    <div class="text-artist">
+                                        <h4>Le Massi</h4>
+                                        <p>Le Massi est un artiste visuel, musicien et acteur canadien basé à Paris.
+                                            Son travail photographique combine des éléments de poésie, de voyage et de spontanéité.
+                                            Ce faisant, il recadre les qualités séduisantes de l'errance au travers de la fragile représentation photographique du sublime.
+                                        </p>
+                                        <a href="https://instagram.com/lemassi" target="_blank">@lemassi</a> <br>
+                                        <a href="https://www.lemassi.com/" target="_blank">www.lemassi.com</a>
+                                    </div>
+                                </li>
+                                <li class="row l9">
+                                    <div>
+                                        <img src="{{ asset('assets/img/passeur.jpg') }}" alt="Thomas Lhomme">
+                                    </div>
+                                    <div class="text-artist">
+                                        <h4>Thomas Lhomme</h4>
+                                        <p>Accro à l'image et à l'action, hyperactif sur le terrain. Thomas a commencé à prendre des photos à l'âge de seize ans. Quelques années plus tard, il s'est porté volontaire pour quelques ONG à l'étranger en Asie et a été recruté pour travailler dans plusieurs pays africains. Il ne peut pas imaginer faire autre chose que voyager d'un
+                                            endroit à un autre en racontant des histoires à travers la photographie et le documentaire en plongeant et en se mélangeant aux cultures locales.
+                                        </p>
+                                        <a href="https://instagram.com/thomas.lhomme" target="_blank">@thomas.lhomme</a> <br>
+                                        <a href="http://www.thomaslhomme.com/" target="_blank">www.thomaslhomme.com</a>
+                                    </div>
+                                </li>
+                                <li class="row l10">
+                                    <div>
+                                        <img src="{{ data_uri_thumbnail('assets/img/Femme-Maison.jpg', 100, 75) }}" {{ stimulus_controller('symfony/ux-lazy-image/lazy-image') }} data-hd-src="{{ asset('assets/img/Femme-Maison.jpg') }}" alt="Anne Laure Maison" >
+                                    </div>
+                                    <div class="text-artist">
+                                        <h4>Anne Laure Maison</h4>
+                                        <p>Fascinée par la façon dont les hommes vivent dans ce monde et profondément habitée par son propre nom de famille, son travail parle d’architecture, du rapport entre l’homme et le construit, de la façon dont il se l’approprie. Sa dernière série de collages « Femme-Maison », questionne l’image de la femme contemporaine, forte, libre et autonome, capable de porter sa propre architecture, sa maison.
+                                            Fières de ce qu’elles sont et revendiquant leur émancipation, ces allégories s’affichent sur les murs des villes qu’Anne-Laure traverse.
+                                        </p>
+                                        <a href="https://instagram.com/femmemaisonproject" target="_blank">@femmemaisonproject </a> <br>
+                                        <a href="https://instagram.com/annelauremaison" target="_blank">@annelauremaison</a> <br>
+                                        <a href="https://www.annelauremaison.com/" target="_blank">www.annelauremaison.com</a>
+                                    </div>
+                                </li>
+                                <li class="row l11">
+                                    <div>
+                                        <img src="{{ asset('assets/img/woman-sea.jpg') }}" alt="Eshanet Noaparast">
+                                    </div>
+                                    <div class="text-artist">
+                                        <h4>Eshanet Noaparast</h4>
+                                        <p>Ehsaneh Noaparast est née à Téhéran en 1980. À la suite d’un doctorat en
+                                            sociologie des religions à École Pratique des Hautes Études en 2013, elle a obtenue un diplôme universitaire en cinéma documentaire à l’UFR des Arts de l’Université de Picardie Jules Verne, ainsi qu’une formation aux Ateliers Varan à Paris. Elle travaille actuellement sur son prochain projet de court-métrage
+                                            fiction.
+                                        </p>
+                                        <a href="https://instagram.com/ehsanehnoaparast" target="_blank">@ehsanehnoaparast</a>
+                                        <br>
+                                        <a href="https://www.ehsanehnoaparast.com/" target="_blank">www.ehsanehnoaparast.com</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <section class="partner" id="partner">
+            <div class="partner-inner">
+                <div class="about">
+                    <h3>A propos</h3>
+                    <p>IMPULSION COLLECTIVE investit les murs d'Amiens en affichant la richesse de la photographie contemporaine : amiénoise, nationale et internationale. A défaut de disposer d'un espace dédié à la photographie, nous faisons le pari d'occuper la rue pour que les artistes reprennent leur place au plus près du public.
+                        L'exposition se poursuit en ligne sur le compte instagram de l'association, pour suivre les artistes, leurs travaux et leurs actus.</p>
+                    <div class="partner-content">
+                        <h3>On parle de nous</h3>
+                        <a href="https://premium.courrier-picard.fr/id140514/article/2020-11-12/des-photos-dart-collees-sur-les-murs-damiens" target="_blank"><img src="{{ asset('assets/img/c-p.png') }}" alt="courrier-picard"></a>
+                        <a href="https://www.punktum.fr/impulsion-collective/" target="_blank"><img src="{{ asset('assets/img/punktum.png') }}" alt="punktum"></a>
+                        <a href="https://lumieresdelaville.net/portfolio-view/impulsion-collective-amiens-photographie-rues/" target="_blank"><img src="{{ asset('assets/img/ldlv.png') }}" alt="Lumiere de la ville"></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="intro">
+            <div class="intro-logo">
+                <div class="impulsion-logo">
+                    <img src="{{ asset('assets/img/logo2.svg') }}"  alt="logo" style="display:none">
+                </div>
+            </div>
+        </div>
+        <div class="slider"></div>
+        {% block body %}
+        {% endblock %}
+            <footer>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+                <script src="{{ asset('assets/js/index.js') }}"></script>
+            </footer>
+
     </body>
+
 </html>
