@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+<main class="p-3 p-md-5 m-md-3">
+
+    <h1>Mon compte</h1>
+    {% if is_granted('ROLE_ADMIN') %}
+    <small><a href="/admin">Accéder au backoffice</a></small>
+    {% endif %}
+
+    <p>Bienvenue {{ app.user.firstname }} dans votre compte. </p>
+    <p>C'est dans cet espace que vous allez pouvoir gérer toutes vos informations personnelles.</p>
+
+
+    <a href="{{ path('account_password') }}">Modifier votre mot de passe</a> <br>
+    <a href="{{ path('account_address') }}">Gérer mes adresses</a><br>
+    <a href="{{ path('account_order') }}">Mes commandes</a>
+
+</main>
+
+{% endblock %}

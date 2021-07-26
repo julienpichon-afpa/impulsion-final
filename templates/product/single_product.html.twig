@@ -1,0 +1,12 @@
+<div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 py-3">
+            <a href="{{ path('product', { 'slug' : product.slug }) }}" style="text-decoration: none; color: black;">
+                <img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid" style="height: 300px; border-radius: 21px;">
+                <h4 class="display-5">{{ product.name }}</h4>
+                <p class="lead">{{ product.subtitle }}</p>
+                <span>{{ (product.price / 100)|number_format(2, ',', '.') }} €</span>
+            </a>
+        </div>
+    </div>
+</div>
